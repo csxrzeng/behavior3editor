@@ -218,8 +218,10 @@ gulp.task('_electron', ['build'], function(cb) {
     dir       : 'build',
     out       : '.temp-dist',
     name      : project.name,
-    platform  : 'linux,win32',
-    arch      : 'all',
+    // platform  : 'linux,win32',
+    // arch      : 'all',
+    platform  : 'win32',
+    arch      : 'x64',
     version   : '0.34.2',
     overwrite : true,
     asar      : true

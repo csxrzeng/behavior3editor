@@ -47,11 +47,14 @@ angular.module('app', [
               });
           }, 500);
         }
-
+        console.log(projects);
         if (projects.length > 0 && projects[0].isOpen) {
           projectModel
             .openProject(projects[0].path)
             .then(function() {
+              closePreload();
+            }, function(e){
+              console.error(e);
               closePreload();
             });
         } else {
