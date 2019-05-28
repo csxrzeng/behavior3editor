@@ -121,7 +121,10 @@
       
       return $q(function(resolve, reject) {
         $window.editor.clearDirty();
-        storageService.save(project.path, project);
+        var path = project.path;
+        delete project.path; // the data should not contains the path
+        storageService.save(path, project);
+        project.path = path;
         _updateRecentProjects(project);
         resolve();
       });
@@ -130,6 +133,7 @@
       return $q(function(resolve, reject) {
         try {
           var project = storageService.load(path);
+          project.path = path; // path should be the physical path
           editorService.openProject(project.data);
           _setProject(project);
           resolve();
