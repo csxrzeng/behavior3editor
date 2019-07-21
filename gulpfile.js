@@ -1,3 +1,5 @@
+process.env.ELECTRON_MIRROR = 'https://npm.taobao.org/mirrors/electron/';
+
 // GULP MODULES ===============================================================
 var gulp          = require('gulp');
 var concat        = require('gulp-concat');
@@ -222,15 +224,9 @@ gulp.task('_electron', ['build'], function(cb) {
     // arch      : 'all',
     platform  : 'win32',
     arch      : 'x64',
-    electronVersion : '5.0.7',
+    version : '0.34.2',
     overwrite : true,
-    asar      : true,
-    download  : {
-      mirrorOptions : {
-        mirror : 'https://npm.taobao.org/mirrors/electron/',
-        customDir : '5.0.7'
-      }
-    },
+    asar      : true
   }, function done(err, appPath) {
     cb(err);
   });
