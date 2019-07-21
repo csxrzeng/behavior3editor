@@ -222,12 +222,18 @@ gulp.task('_electron', ['build'], function(cb) {
     // arch      : 'all',
     platform  : 'win32',
     arch      : 'x64',
-    version   : '0.34.2',
+    electronVersion : '5.0.7',
     overwrite : true,
-    asar      : true
+    asar      : true,
+    download  : {
+      mirrorOptions : {
+        mirror : 'https://npm.taobao.org/mirrors/electron/',
+        customDir : '5.0.7'
+      }
+    },
   }, function done(err, appPath) {
     cb(err);
-  })
+  });
 });
 
 gulp.task('_electron_zip', ['_electron'], function() {
